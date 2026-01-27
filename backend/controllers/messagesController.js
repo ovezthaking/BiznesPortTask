@@ -11,6 +11,6 @@ export const getAllMessages = async (req, res, next) => {
             data: messages
         })
     } catch (e) {
-        next(error)
+        next(e)
     }
 }
