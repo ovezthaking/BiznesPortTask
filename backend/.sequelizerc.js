@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-module.exports = {
+export default {
     'config': path.resolve(__dirname, 'config', 'config.js'),
     'models-path': path.resolve(__dirname, 'models'),
     'seeders-path': path.resolve(__dirname, 'seeders'),
