@@ -5,16 +5,16 @@ export default {
     development: {
         username: process.env.DB_USER || 'root',
         password: process.env.DB_PASSWORD || 'password',
-        database: process.env.DB_NAME || 'messages_db',
-        host: process.env.DB_HOST || 'localhost',
+        database: process.env.DB_NAME || 'interview123',
+        host: process.env.DB_HOST || 'mysql',
         dialect: 'mysql',
         port: 3306
     },
     test: {
         username: process.env.DB_USER || 'root',
         password: process.env.DB_PASSWORD || 'password',
-        database: process.env.DB_NAME || 'messages_db_test',
-        host: process.env.DB_HOST || 'localhost',
+        database: process.env.DB_NAME || 'interview123_test',
+        host: process.env.DB_HOST || 'mysql',
         dialect: 'mysql',
         port: 3306
     },

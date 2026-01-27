@@ -25,6 +25,8 @@ services:
   backend:
     container_name: backend_api
     restart: always
+    env_file:
+     - backend/.env
     build:
       context: backend
       dockerfile: Dockerfile
@@ -34,6 +36,7 @@ services:
       - backend
     depends_on:
       - db
+    command: sh -c "npx sequelize db:migrate && npm start"
 
   frontend:
     container_name: next_frontend
