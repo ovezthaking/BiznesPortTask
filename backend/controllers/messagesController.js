@@ -72,4 +72,38 @@ export const createMessage = async (req, res, next) => {
     }
 }
 
+export const updateMessage = async (req, res, next) => {
+    try {
+        const errors = validationResult(req)
 
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                success: false,
+                errors: errors.array()
+            })
+        }
+
+        const { messageId } = req.params
+        const { content } = req.body
+
+        const message = await Message.findByPk(messageId)
+
+        if (!message){
+            return res.status(404).json({
+                success: false,
+                message: 'Wiadomość nieznaleziona'
+            })
+        }
+
+        message.content = content
+        await message.save()
+
+        res.json({
+            success: true,
+            data: message,
+            message: 'Wiadomość zaaktualizowana'
+        })
+    } catch (err) {
+        next(err)
+    }
+}
