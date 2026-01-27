@@ -21,7 +21,19 @@ export const getMessageById = async (req, res) => {
 
     try {
         const message = await Message.findByPk(messageId)
+
+        if (!message) {
+            return res.status(404).json({
+                success: false,
+                message: 'Wiadomość nieznaleziona'
+            })
+        }
+
+        res.json({
+            success: true,
+            data: message
+        })
     } catch (err) {
-        
+        next(err)
     }
 }
