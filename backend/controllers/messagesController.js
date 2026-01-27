@@ -16,7 +16,7 @@ export const getAllMessages = async (req, res, next) => {
     }
 }
 
-export const getMessageById = async (req, res) => {
+export const getMessageById = async (req, res, next) => {
     const { messageId } = req.params
 
     try {
@@ -36,4 +36,8 @@ export const getMessageById = async (req, res) => {
     } catch (err) {
         next(err)
     }
+}
+
+export const createMessage = async (req, res, next) {
+    
 }

@@ -5,3 +5,5 @@ export const messagesRouter = express.Router()
 
 messagesRouter.get('/', getAllMessages)
 messagesRouter.get('/:messageId', getMessageById)
+
+messagesRouter.post('/', createMessage)
