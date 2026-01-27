@@ -3,9 +3,15 @@ import Message from "../models/Message.js"
 import express from 'express'
 
 export const getAllMessages = async (req, res, next) => {
+    let { order } = req.query
+
+    if (!order || !['asc', 'ASC', 'desc', 'DESC'].includes(order)){
+        order = 'DESC'
+    }
+
     try {
         const messages = await Message.findAll({
-            order: [['createdAt', 'DESC']]
+            order: [['createdAt', order]]
         })
 
         res.json({
