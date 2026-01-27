@@ -46,6 +46,8 @@ export const getMessageById = async (req, res, next) => {
 }
 
 export const createMessage = async (req, res, next) => {
+    const { content } = req.body
+
     try {
         const errors = validationResult(req)
 
@@ -55,8 +57,6 @@ export const createMessage = async (req, res, next) => {
                 errors: errors.array()
             })
         }
-
-        const { content } = req.body
 
         const message = await Message.create({
             content
@@ -73,6 +73,9 @@ export const createMessage = async (req, res, next) => {
 }
 
 export const updateMessage = async (req, res, next) => {
+    const { messageId } = req.params
+    const { content } = req.body
+
     try {
         const errors = validationResult(req)
 
@@ -82,9 +85,6 @@ export const updateMessage = async (req, res, next) => {
                 errors: errors.array()
             })
         }
-
-        const { messageId } = req.params
-        const { content } = req.body
 
         const message = await Message.findByPk(messageId)
 
@@ -102,6 +102,30 @@ export const updateMessage = async (req, res, next) => {
             success: true,
             data: message,
             message: 'Wiadomość zaaktualizowana'
+        })
+    } catch (err) {
+        next(err)
+    }
+}
+
+export const deleteMessage = async (req, res, next) => {
+    const { messageId } = req.params
+
+    try {
+        const message = await Message.findByPk(messageId)
+
+        if (!message) {
+            return res.status(404).json({
+                success: false,
+                message: 'Wiadomość nieznaleziona'
+            })
+        }
+
+        await message.destroy()
+
+        res.json({
+            success: true,
+            message: 'Wiadomość usunięta'
         })
     } catch (err) {
         next(err)
