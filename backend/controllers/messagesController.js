@@ -38,6 +38,6 @@ export const getMessageById = async (req, res, next) => {
     }
 }
 
-export const createMessage = async (req, res, next) {
+export const createMessage = async (req, res, next) => {
     
 }
