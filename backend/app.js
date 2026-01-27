@@ -27,6 +27,7 @@ app.use((error, req, res, next) => {
 
 // DB Connection
 sequelize
+  .authenticate()
   .then(() => {
     console.log("Connection has been established successfully.");
     app.listen(process.env.PORT, () => {
