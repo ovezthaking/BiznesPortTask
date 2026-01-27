@@ -1,4 +1,5 @@
 import Message from "../models/Message.js"
+import express from 'express'
 
 export const getAllMessages = async (req, res, next) => {
     try {
@@ -10,7 +11,17 @@ export const getAllMessages = async (req, res, next) => {
             success: true,
             data: messages
         })
-    } catch (e) {
-        next(e)
+    } catch (err) {
+        next(err)
+    }
+}
+
+export const getMessageById = async (req, res) => {
+    const { messageId } = req.params
+
+    try {
+        const message = await Message.findByPk(messageId)
+    } catch (err) {
+        
     }
 }
