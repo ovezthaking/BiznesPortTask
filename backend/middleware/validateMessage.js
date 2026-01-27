@@ -1,6 +1,6 @@
 import { body } from 'express-validator'
 
-export default validateMessage = [
+export const validateMessage = [
     body('content')
         .trim()
         .notEmpty()
