@@ -3,6 +3,8 @@
 import { useState } from "react"
 import { useGetMessagesQuery } from "../store/services/messagesApi"
 import { Message } from "../store/types"
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Button } from "@/components/ui/button"
 
 export default function MessagesTable() {
     const { data: messages, isLoading, error } = useGetMessagesQuery()
@@ -34,6 +36,44 @@ export default function MessagesTable() {
     }
 
     return (
-        <p>Message Table</p>
+        <>
+            <div>
+                <Table>
+                    <TableCaption>Lista wiadomości</TableCaption>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead>ID</TableHead>
+                            <TableHead>Wiadomość</TableHead>
+                            <TableHead>Akcje</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {messages.map((message) => (
+                            <TableRow key={message.id}>
+                                <TableCell>{message.id}</TableCell>
+                                <TableCell>{message.content}</TableCell>
+                                <TableCell>
+                                    <Button
+                                        variant='outline'
+                                        size='sm'
+                                        onClick={() => setEditMessage(message)}
+                                    >
+                                        Edytuj
+                                    </Button>
+
+                                    <Button
+                                        variant='destructive'
+                                        size='sm'
+                                        onClick={() => setDeleteMessage(message)}
+                                    >
+                                        Usuń
+                                    </Button>
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </div>
+        </>
     )
 }
