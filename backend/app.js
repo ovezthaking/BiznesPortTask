@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import { config } from "dotenv";
 import sequelize from "./utils/database.js";
 import { messagesRouter } from "./routes/messages.js";
+import cors from 'cors';
 
 // Initialize environment variables
 config();
@@ -10,6 +11,7 @@ config();
 const app = express();
 
 // Middleware
+app.use(cors())
 app.use(bodyParser.json());
 
 // Messages routes
