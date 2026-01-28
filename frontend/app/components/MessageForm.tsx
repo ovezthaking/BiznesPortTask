@@ -16,6 +16,24 @@ export default function MessageForm() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
 
+        if (!content.trim()){
+            toast({
+                title: 'Brak treści',
+                description: 'Wiadomość nie może być pusta',
+                variant: 'destructive'
+            })
+            return
+        }
+
+        if (content.length < 1 || content.length > 1000){
+            toast({
+                title: 'Nieprawidłowa ilość znaków',
+                description:'Liczba znaków w wiadomości musi mieścić się w przedziale od 1 do 1000 znaków',
+                variant: 'destructive'
+            })
+            return
+        }
+
         try {
             await createMessage({ content }).unwrap()
 
@@ -37,7 +55,7 @@ export default function MessageForm() {
     return (
         <form action="post" onSubmit={handleSubmit}>
             <div>
-                <Label></Label>
+                <Label htmlFor="message">Nowa wiadomość</Label>
                 <Input 
                     id="message"
                     type="text"
