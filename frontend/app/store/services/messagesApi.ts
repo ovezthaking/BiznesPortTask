@@ -1,5 +1,5 @@
 import type { Message, MessageResponse } from "../types.js";
-import { CreateApi, createApi, EndpointDefinitions, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const messagesApi = createApi({
     reducerPath: 'messagesApi',
