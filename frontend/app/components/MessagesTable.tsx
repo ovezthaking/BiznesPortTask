@@ -5,6 +5,7 @@ import { useGetMessagesQuery } from "../store/services/messagesApi"
 import { Message } from "../store/types"
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
+import EditMessageDialog from "./EditMessageDialog"
 
 export default function MessagesTable() {
     const { data: messages, isLoading, error } = useGetMessagesQuery()
@@ -74,6 +75,12 @@ export default function MessagesTable() {
                     </TableBody>
                 </Table>
             </div>
+
+            <EditMessageDialog
+                message={editMessage}
+                open={!!editMessage}
+                onOpenChange={(open) => !open && setEditMessage(null)}
+            />
         </>
     )
 }
