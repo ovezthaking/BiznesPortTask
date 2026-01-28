@@ -4,8 +4,8 @@ import { useToast } from "@/hooks/use-toast"
 import { useCreateMessageMutation } from "../store/services/messagesApi"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
 import { useState } from "react"
+import { Textarea } from "@/components/ui/textarea"
 
 
 export default function MessageForm() {
@@ -56,13 +56,13 @@ export default function MessageForm() {
         <form action="post" onSubmit={handleSubmit}>
             <div>
                 <Label htmlFor="message">Nowa wiadomość</Label>
-                <Input 
+                <Textarea 
                     id="message"
-                    type="text"
                     placeholder="Wpisz wiadomość..."
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     disabled={isLoading}
+                    rows={5}
                 />
                 <p>
                     {content.length}/1000 znaków
