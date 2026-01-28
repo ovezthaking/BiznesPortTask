@@ -1,10 +1,12 @@
 import type { Message, MessageResponse } from "../types.js";
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080';
+
 export const messagesApi = createApi({
     reducerPath: 'messagesApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:8080/api/messages'
+        baseUrl: `${API_BASE_URL}/api/messages`
     }),
     tagTypes: ['Message'],
     endpoints: (builder) => ({
