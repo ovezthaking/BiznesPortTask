@@ -64,9 +64,11 @@ export default function EditMessageDialog(
 
             onOpenChange(false)
         } catch (err) {
+            const errorMessage = (err as { data?: { message?: string } })?.data?.message || 'Nie udało się usunąć wiadomości'
+
             toast({
                 title: 'Błąd',
-                description: err?.data?.message || 'Nie udało się zaaktualizować wiadomości',
+                description: errorMessage || 'Nie udało się zaaktualizować wiadomości',
                 variant: 'destructive'
             })            
         }

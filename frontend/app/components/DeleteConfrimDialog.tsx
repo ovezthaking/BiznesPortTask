@@ -29,10 +29,12 @@ export default function DeleteConfirmDialog(
             })
 
             onOpenChange(false)
-        } catch (err) {
+        } catch (err: unknown) {
+            const errorMessage = (err as { data?: { message?: string } })?.data?.message || 'Nie udało się usunąć wiadomości'
+
             toast({
                 title: 'Błąd',
-                description: err?.data?.message || 'Nie udało się usunąć wiadomości',
+                description: errorMessage,
                 variant: 'destructive'
             })
         }

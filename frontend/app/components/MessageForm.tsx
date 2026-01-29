@@ -44,9 +44,11 @@ export default function MessageForm() {
 
             setContent('')
         } catch (err: unknown) {
+            const errorMessage = (err as { data?: { message?: string } })?.data?.message || 'Nie udało się usunąć wiadomości'
+
             toast({
                 title: 'Błąd',
-                description: err?.data?.message || 'Nie udało się wysłać wiadomości',
+                description: errorMessage || 'Nie udało się wysłać wiadomości',
                 variant: 'destructive'
             })
         }
