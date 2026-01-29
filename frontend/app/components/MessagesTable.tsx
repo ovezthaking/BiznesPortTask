@@ -7,10 +7,11 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import { Button } from "@/components/ui/button"
 import EditMessageDialog from "./EditMessageDialog"
 import DeleteConfirmDialog from "./DeleteConfrimDialog"
-import { Loader2, Pencil, Trash2 } from "lucide-react"
+import { ArrowDown, ArrowUp, Loader2, Pencil, Trash2 } from "lucide-react"
 
 export default function MessagesTable() {
-    const { data: messages, isLoading, error } = useGetMessagesQuery()
+    const [order, setOrder] = useState<'ASC' | 'DESC'>('DESC')
+    const { data: messages, isLoading, error } = useGetMessagesQuery(order)
     const [editMessage, setEditMessage] = useState<Message | null>(null)
     const [deleteMessage, setDeleteMessage] = useState<Message | null>(null)
 
@@ -33,17 +34,34 @@ export default function MessagesTable() {
 
     if (!messages || messages.length === 0) {
         return (
-            <div className="p-10 text-center bg-gray-50 rounded-md">
+            <div className="p-10 text-center bg-gray-50 rounded-md space-y-4">
                 <p className="text-gray-700">Brak wiadomości. Dodaj pierwszą wiadomość!</p>
+                <Button
+                    variant='outline'
+                    size='sm'
+                    onClick={() => setOrder(order === 'DESC' ? 'ASC' : 'DESC')}
+                >
+                    Sortuj: {order === 'DESC' ? 'malejąco' : 'rosnąco'}
+                </Button>
             </div>
         )
     }
 
     return (
         <>
-            <div className="rounded-md border bg-white shadow pt-10 px-5">
+            <div className="rounded-md border bg-white shadow pt-6 px-5">
+                <div className="flex items-center justify-between pb-4">
+                    <h3 className="text-gray-700 font-medium">Lista wiadomości</h3>
+                    <Button
+                        variant='outline'
+                        size='sm'
+                        onClick={() => setOrder(order === 'DESC' ? 'ASC' : 'DESC')}
+                    >
+                        Sortuj: {order === 'DESC' ? <ArrowDown /> : <ArrowUp />}
+                    </Button>
+                </div>
                 <Table>
-                    <TableCaption className="text-gray-700 font-medium">Lista wiadomości</TableCaption>
+                    <TableCaption className="text-gray-500">Wiadomości posortowane {order === 'DESC' ? 'malejąco' : 'rosnąco'}</TableCaption>
                     <TableHeader>
                         <TableRow>
                             <TableHead className="w-[5%]">ID</TableHead>
