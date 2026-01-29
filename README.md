@@ -102,7 +102,7 @@ Zadanie będzie oceniane na podstawie:
 - [x] Frontend korzysta z RTK Query.
 - [x] UI zbudowane z komponentów ShadCN.
 - [x] Projekt uruchamia się poprawnie przez `docker compose up`.
-- [ ] Pull request z `dev` do `main` gotowy.
+- [x] Pull request z `dev` do `main` gotowy.
 - [ ] `@BiznesportTech` dodany jako współpracownik i reviewer.
 
 ---
