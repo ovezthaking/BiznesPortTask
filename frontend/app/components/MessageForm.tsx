@@ -53,8 +53,8 @@ export default function MessageForm() {
     }
 
     return (
-        <form action="post" onSubmit={handleSubmit}>
-            <div>
+        <form action="post" onSubmit={handleSubmit} className="space-y-4 p-6 bg-white rounded-lg shadow">
+            <div className="space-y-2">
                 <Label htmlFor="message">Nowa wiadomość</Label>
                 <Textarea 
                     id="message"
@@ -63,8 +63,9 @@ export default function MessageForm() {
                     onChange={(e) => setContent(e.target.value)}
                     disabled={isLoading}
                     rows={5}
+                    className="w-full"
                 />
-                <p>
+                <p className="text-sm text-gray-500">
                     {content.length}/1000 znaków
                 </p>
             </div>
@@ -72,6 +73,7 @@ export default function MessageForm() {
             <Button
                 type="submit"
                 disabled={isLoading}
+                className="w-full"
             >
                 {isLoading ? 'Dodawanie...' : 'Wyślij'}
             </Button>

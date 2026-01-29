@@ -7,7 +7,6 @@ export default function Home() {
     <>
       <header className="bg-gray-50 p-8">
         <div className="max-w-6xl mx-auto">
-          {/* Nagłówek */}
           <div className="text-center">
             <h1 className="text-4xl font-bold text-gray-900">
               Wiadomości
@@ -21,10 +20,9 @@ export default function Home() {
 
       <main className="min-h-screen bg-gray-50 p-8">
         <div className="max-w-6xl mx-auto space-y-8">
-          {/* Formularz dodawania */}
           <MessageForm />
 
-          {/* Tabela wiadomości */}
+  
           <MessagesTable />
         </div>
       </main>

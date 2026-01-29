@@ -15,8 +15,8 @@ export default function MessagesTable() {
 
     if (isLoading){
         return(
-            <div>
-                <span>Ładowanie wiadomości...</span>
+            <div className="flex justify-center items-center p-8 mt-10">
+                <span className="ml-2">Ładowanie wiadomości...</span>
             </div>
         )
     }
