@@ -22,7 +22,6 @@ export default function Home() {
         <div className="max-w-6xl mx-auto space-y-8 mt-10 mb-10">
           <MessageForm />
 
-  
           <MessagesTable />
         </div>
       </main>
