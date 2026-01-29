@@ -43,7 +43,7 @@ export default function MessagesTable() {
         <>
             <div className="rounded-md border bg-white shadow pt-10 px-5">
                 <Table>
-                    <TableCaption>Lista wiadomości</TableCaption>
+                    <TableCaption className="text-gray-700 font-medium">Lista wiadomości</TableCaption>
                     <TableHeader>
                         <TableRow>
                             <TableHead className="w-[5%]">ID</TableHead>
