@@ -79,13 +79,13 @@ export default function EditMessageDialog(
                         <DialogHeader>
                             <DialogTitle>Edytuj wiadomość</DialogTitle>
                             <DialogDescription>
-                                Wprowadź zmiany i kliknij przycisk "zapisz"
+                                Wprowadź zmiany i kliknij przycisk &ldquo;zapisz&ldquo;
                             </DialogDescription>
                         </DialogHeader>
 
                         <div>
-                            <div>
-                                <Label>Treść wiadomości</Label>
+                            <div className="mt-5">
+                                <Label htmlFor="edit-message">Treść wiadomości</Label>
                                 <Textarea 
                                     id="edit-message"
                                     placeholder="Wpisz wiadomość..."
@@ -94,7 +94,7 @@ export default function EditMessageDialog(
                                     disabled={isLoading}
                                     rows={5}
                                 />
-                                <p>
+                                <p className="text-sm text-gray-500">
                                     {content.length}/1000 znaków
                                 </p>
                             </div>
